@@ -57,6 +57,7 @@ with tab_agg:
                 margin=dict(l=10, r=10, t=30, b=10),
                 height=320,
                 coloraxis_showscale=False,
+                font=dict(color="#1E293B", family="Plus Jakarta Sans"),
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)"
             )
@@ -95,6 +96,7 @@ with tab_agg:
                 margin=dict(l=10, r=10, t=30, b=10),
                 height=300,
                 coloraxis_showscale=False,
+                font=dict(color="#1E293B", family="Plus Jakarta Sans"),
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)"
             )
@@ -117,6 +119,7 @@ with tab_agg:
             fig_types.update_layout(
                 margin=dict(l=10, r=10, t=30, b=10),
                 height=300,
+                font=dict(color="#1E293B", family="Plus Jakarta Sans"),
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)"
             )

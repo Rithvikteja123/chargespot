@@ -145,7 +145,15 @@ with col_chart:
             margin=dict(t=10, b=10, l=10, r=10),
             height=280,
             showlegend=True,
-            legend=dict(orientation="h", yanchor="bottom", y=-0.2, xanchor="center", x=0.5),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=-0.25,
+                xanchor="center",
+                x=0.5,
+                font=dict(color="#1E293B", size=12, family="Plus Jakarta Sans")
+            ),
+            font=dict(color="#1E293B", family="Plus Jakarta Sans"),
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)"
         )
@@ -157,18 +165,35 @@ with col_recent:
     st.subheader("⏱ Recent Charging Sessions")
     recent_sessions = get_all_sessions(limit=5)
     if recent_sessions:
-        display_rows = []
+        table_html = """
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Session ID</th>
+                    <th>Station</th>
+                    <th>Plug</th>
+                    <th>Vehicle</th>
+                    <th>Energy</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+        """
         for s in recent_sessions:
-            display_rows.append({
-                "Session ID": s.get("session_id"),
-                "Station": s.get("station_id"),
-                "Plug": s.get("connector_id"),
-                "Vehicle": s.get("vehicle_id"),
-                "Energy (kWh)": s.get("energy_kwh", 0.0),
-                "Status": s.get("status").replace("_", " ").title()
-            })
-        df_recent = pd.DataFrame(display_rows)
-        st.dataframe(df_recent, use_container_width=True, hide_index=True)
+            st_status = s.get("status", "")
+            badge = render_badge(st_status)
+            table_html += f"""
+                <tr>
+                    <td style="font-weight:700; color:#1B4332;">{s.get("session_id")}</td>
+                    <td style="font-weight:600;">{s.get("station_id")}</td>
+                    <td><span class="badge-speed">{s.get("connector_id")}</span></td>
+                    <td><code style="font-size:0.8rem; background:#F1F5F9; color:#0F172A; padding:2px 6px; border-radius:4px;">{s.get("vehicle_id")}</code></td>
+                    <td style="font-weight:600; color:#1E293B;">{s.get("energy_kwh", 0.0):.1f} kWh</td>
+                    <td>{badge}</td>
+                </tr>
+            """
+        table_html += "</tbody></table>"
+        st.markdown(table_html, unsafe_allow_html=True)
     else:
         st.info("No session records found.")
 
