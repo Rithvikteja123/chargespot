@@ -25,9 +25,16 @@ apply_custom_theme()
 
 # Sidebar branding & database status
 with st.sidebar:
-    st.markdown("### ⚡ **ChargeSpot**")
-    st.markdown("*EV Availability & Analytics*")
-    st.divider()
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%); padding: 1.1rem 1rem; border-radius: 12px; margin-bottom: 1rem; color: white;">
+        <div style="font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; display:flex; align-items:center; gap: 8px;">
+            <span>⚡</span> ChargeSpot
+        </div>
+        <div style="font-size: 0.78rem; color: #D8F3DC; font-weight: 500; margin-top: 4px;">
+            EV Charging & Usage Analytics System
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     is_connected = check_connection()
     if is_connected:
@@ -36,16 +43,20 @@ with st.sidebar:
         st.error("✗ MongoDB Disconnected\nCheck local service", icon="🚨")
 
     st.markdown("---")
-    st.markdown("**Academic Viva Navigation**")
-    st.caption("1. Home: Network KPIs & Live Status\n2. Find a Station: Search & Filter\n3. Manage Stations: CRUD Operations\n4. Charging Sessions: Real-time Lifecycle\n5. Insights: Aggregations & ML")
-    st.markdown("---")
-    st.caption("CSE494 Individual Project")
+    st.markdown("""
+    <div style="font-size: 0.82rem; color: #475569; padding: 0.25rem 0;">
+        <div style="font-weight: 700; color: #1E293B; margin-bottom: 2px;">📚 Course Project</div>
+        <div>CSE494: Intelligent NoSQL Databases</div>
+        <div style="color: #64748B; margin-top: 2px;">Lovely Professional University</div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Main Page Header
 col_header_left, col_header_right = st.columns([3, 1])
 with col_header_left:
-    st.markdown('<div class="hero-title">Find your next charge.</div>', unsafe_allow_html=True)
-    st.markdown('<div class="hero-tagline">“A little more charge, a little less waiting.” — Intelligent NoSQL EV Network Tracker</div>', unsafe_allow_html=True)
+    st.markdown('<div style="display:inline-block; font-size:0.75rem; font-weight:700; color:#15803D; background:#DCFCE7; padding:3px 10px; border-radius:9999px; letter-spacing:0.06em; margin-bottom:8px;">⚡ INTELLIGENT EV CHARGING NETWORK</div>', unsafe_allow_html=True)
+    st.markdown('<div class="hero-title">ChargeSpot — EV Availability & Usage Analytics</div>', unsafe_allow_html=True)
+    st.markdown('<div class="hero-tagline">“A little more charge, a little less waiting.” — Intelligent NoSQL Database Tracker for Electric Vehicles</div>', unsafe_allow_html=True)
 
 with col_header_right:
     st.markdown(

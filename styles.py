@@ -309,12 +309,15 @@ def apply_custom_theme():
 def render_badge(status):
     """Returns HTML for a status pill badge."""
     norm = status.lower().replace(" ", "_")
-    if norm in ["available", "operational"]:
+    if norm in ["available", "operational", "completed"]:
         css_class = "badge-available"
         dot = "🟢"
-    elif norm in ["occupied", "in_progress"]:
+    elif norm in ["occupied", "in_progress", "active"]:
         css_class = "badge-occupied"
         dot = "🟠"
+    elif norm in ["cancelled"]:
+        css_class = "badge-speed"
+        dot = "⚪"
     else:
         css_class = "badge-out-of-service"
         dot = "🔴"
