@@ -7,10 +7,11 @@ import streamlit as st
 import pandas as pd
 from services.station_service import search_stations, get_unique_cities
 from services.session_service import start_charging_session
-from styles import apply_custom_theme, render_badge
+from styles import apply_custom_theme, render_top_navbar, render_badge
 
 st.set_page_config(page_title="Find a Station — ChargeSpot", page_icon="🔍", layout="wide")
 apply_custom_theme()
+render_top_navbar(active_page="Find a Station")
 
 st.markdown('<div class="hero-title">Find a Charging Station</div>', unsafe_allow_html=True)
 st.markdown('<div class="hero-tagline">Search real-time availability across fast-chargers and destination plugs.</div>', unsafe_allow_html=True)

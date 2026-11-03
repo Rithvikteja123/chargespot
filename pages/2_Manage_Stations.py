@@ -14,10 +14,11 @@ from services.station_service import (
     get_all_stations, get_station_by_id, create_station,
     update_station, update_connector_status, delete_station
 )
-from styles import apply_custom_theme, render_badge
+from styles import apply_custom_theme, render_top_navbar, render_badge
 
 st.set_page_config(page_title="Manage Stations — ChargeSpot", page_icon="⚙️", layout="wide")
 apply_custom_theme()
+render_top_navbar(active_page="Manage Stations")
 
 st.markdown('<div class="hero-title">Station Management</div>', unsafe_allow_html=True)
 st.markdown('<div class="hero-tagline">Admin control panel for adding, updating, and removing station records.</div>', unsafe_allow_html=True)

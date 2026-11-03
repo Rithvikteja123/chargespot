@@ -16,10 +16,11 @@ from services.analytics_service import (
 )
 from services.station_service import get_all_stations
 from ml.busy_predictor import predictor
-from styles import apply_custom_theme
+from styles import apply_custom_theme, render_top_navbar
 
 st.set_page_config(page_title="Insights & ML — ChargeSpot", page_icon="📊", layout="wide")
 apply_custom_theme()
+render_top_navbar(active_page="Insights")
 
 st.markdown('<div class="hero-title">Analytics & Machine Learning</div>', unsafe_allow_html=True)
 st.markdown('<div class="hero-tagline">Academic demonstrations of MongoDB Aggregation Pipelines and Explainable Decision Tree Classification.</div>', unsafe_allow_html=True)

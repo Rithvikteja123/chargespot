@@ -14,10 +14,11 @@ from services.session_service import (
     end_charging_session, cancel_charging_session, delete_session
 )
 from services.station_service import get_all_stations, get_station_by_id
-from styles import apply_custom_theme, render_badge
+from styles import apply_custom_theme, render_top_navbar, render_badge
 
 st.set_page_config(page_title="Charging Sessions — ChargeSpot", page_icon="⚡", layout="wide")
 apply_custom_theme()
+render_top_navbar(active_page="Charging Sessions")
 
 st.markdown('<div class="hero-title">Charging Sessions</div>', unsafe_allow_html=True)
 st.markdown('<div class="hero-tagline">Track active charging sessions, simulate plug-ins, and inspect historical energy delivery.</div>', unsafe_allow_html=True)
